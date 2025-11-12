@@ -22,7 +22,7 @@ jobs:
         uses: oracle-actions/login-ocir@v1.2.1
         id: login-ocir
         with:
-          auth_token: $
+          auth_token: ${{ secrets.OCI_AUTH_TOKEN }}
       - name: docker build
         id: docker-build
         run: |
