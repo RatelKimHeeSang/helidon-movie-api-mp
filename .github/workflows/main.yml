@@ -39,8 +39,11 @@ jobs:
           token: ${{ secrets.GIT_REPOPAT }}
       - name: Change config repo manifest
         uses: mikefarah/yq@master
+        env:
+          SHA: ${{ github.sha }}
         with:
-          cmd: yq -i '.spec.template.spec.containers.[0].image = "icn.ocir.io/cnbkloa0ci62/movie/helidon-movie-api-mp:${{ github.sha }}"' kube-helidon-movie-api-mp-deployment.yml
+          cmd: |
+            yq -i '.spec.template.spec.containers[0].image = "icn.ocir.io/axlpeslmb1ng/movie/helidon-movie-api-mp:${SHA}"' kube-helidon-movie-api-mp-deployment.yml
       - name: Pushes to config repository
         run: |
           git add .
