@@ -43,7 +43,7 @@ jobs:
           SHA: ${{ github.sha }}
         with:
           cmd: >
-            yq -i '.spec.template.spec.containers[0].image = "icn.ocir.io/cnbkloa0ci62/movie/jet-movie-msa-ui:" + env(SHA)' kube-jet-movie-msa-ui-deployment.yml
+            yq -i '.spec.template.spec.containers[0].image = "icn.ocir.io/cnbkloa0ci62/movie/helidon-movie-api-mp:" + env(SHA)' kube-helidon-movie-api-mp-deployment.yml
       - name: Pushes to config repository
         run: |
           git add .
